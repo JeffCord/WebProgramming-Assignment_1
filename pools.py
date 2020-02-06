@@ -45,32 +45,37 @@ def handler_method():
         numOfParameters += 1
         searched_parameters['weekday_closure'] = weekday_closure
 
-    # filter pools based on requested parameters
-    filtered_pools = []
+    if (len(searched_parameters) > 0):
+        # filter pools based on requested parameters
+        filtered_pools = []
 
-    # print(root, root[0], root[0][1], root[0][1].tag, root[0][1].text)
-    # print(len(root), len(root[0]), len(root[0][1]), len(root[0][1].tag), len(root[0][1].text))
+        # print(root, root[0], root[0][1], root[0][1].tag, root[0][1].text)
+        # print(len(root), len(root[0]), len(root[0][1]), len(root[0][1].tag), len(root[0][1].text))
 
-    for i in range(len(root)):
-        matching_parameters = 0
-        for j in root[i]:
-            if j.tag in searched_parameters and searched_parameters[j.tag] == j.text:
-                matching_parameters += 1
-                if matching_parameters >= numOfParameters:
-                    filtered_pools.append(root[i][0].text)
-                    break
-                    
-    result_pool_names = ""
+        for i in range(len(root)):
+            matching_parameters = 0
+            for j in root[i]:
+                if j.tag in searched_parameters and searched_parameters[j.tag] == j.text:
+                    matching_parameters += 1
+                    if matching_parameters >= numOfParameters:
+                        filtered_pools.append(root[i][0].text)
+                        break
 
-    header_num = 1
-    for i in filtered_pools:
-        result_pool_names += '<h' + str(header_num) + '>' + i + '</h' + str(header_num) + '>'
+        result_pool_names = ""
 
-    # for p in filtered_pools:
-    #     print(p)
+        header_num = 1
+        for i in filtered_pools:
+            result_pool_names += '<h' + str(header_num) + '>' + i + '</h' + str(header_num) + '>'
 
-    # print the names of those pools to the web page
-    return result_pool_names
+        # for p in filtered_pools:
+        #     print(p)
+
+        # print the names of those pools to the web page
+        return result_pool_names
+    else:
+        # if no query parameters were given, print out the homepage message
+
+        return '<h1>Welcome to Austin Pool Information Website.</h1>'
 
 
 # TODO ask about this if __name__ block
