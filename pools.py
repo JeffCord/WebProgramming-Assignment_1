@@ -65,7 +65,7 @@ def handler_method():
 
         header_num = 1
         for i in filtered_pools:
-            result_pool_names += '<h' + str(header_num) + '>' + i + '\n</h' + str(header_num) + '>'
+            result_pool_names += '<h' + str(header_num) + '>' + i + '</h' + str(header_num) + '>\n'
 
         # for p in filtered_pools:
         #     print(p)
@@ -75,7 +75,7 @@ def handler_method():
     else:
         # if no query parameters were given, print out the homepage message
 
-        return '<h1>Welcome to Austin Pool Information Website.\n</h1>'
+        return '<h1>Welcome to Austin Pool Information Website.</h1>\n'
 
 
 # TODO ask about this if __name__ block
